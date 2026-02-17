@@ -1,0 +1,27 @@
+name: "enecoQ Fetcher (today+month)"
+slug: "enecoq_fetcher"
+version: "0.1.0"
+description: "Fetch enecoQ data hourly and write JSON files into /config/data"
+arch:
+  - aarch64
+  - amd64
+  - armv7
+init: false
+startup: services
+boot: auto
+map:
+  - config:rw
+options:
+  email: ""
+  password: ""
+  interval_minutes: 60
+  jitter_seconds: 60
+  out_dir: "/config/data"
+  log_level: "INFO"
+schema:
+  email: str
+  password: password
+  interval_minutes: int(1,)
+  jitter_seconds: int(0,600)
+  out_dir: str
+  log_level: list(DEBUG|INFO|WARNING|ERROR)
